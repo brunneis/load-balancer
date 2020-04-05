@@ -1,0 +1,4 @@
+---
+endpoints:
+  - example.org:8080
+  - 127.0.0.1:9090

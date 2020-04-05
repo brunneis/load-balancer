@@ -1,0 +1,20 @@
+version: "3.4"
+
+x-logging: &default
+  options:
+    max-size: "50m"
+    max-file: "1"
+  driver: json-file
+
+services:
+  https-reverse-proxy:
+    image: $DOCKER_IMAGE
+    container_name: load-balancer 
+    volumes:
+      - ./endpoints.yaml:/opt/load-balancer/endpoints.yaml:ro
+      - ./haproxy.yaml:/opt/load-balancer/haproxy.yaml:ro
+    ports:
+      - $PORT:8080
+    tty: true
+    restart: always
+    logging: *default

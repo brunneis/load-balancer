@@ -1,0 +1,18 @@
+---
+global:
+  daemon:
+  maxconn: 10000
+  nbproc: 1 
+  nbthread: 4
+  ssl-server-verify: none
+
+defaults:
+  option: forwardfor
+  option: http-server-close
+  option: http-pretend-keepalive
+
+  mode: http
+  timeout:
+    connect: 30s
+    client: 2h
+    server: 2h
